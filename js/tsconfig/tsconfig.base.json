@@ -3,7 +3,6 @@
   "include": ["../src/**/*.ts"],
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
     "baseUrl": "./",
 
     "paths": {

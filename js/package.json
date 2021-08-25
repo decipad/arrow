@@ -52,7 +52,6 @@
   "dependencies": {
     "@types/flatbuffers": "^1.10.0",
     "@types/node": "^16.4.0",
-    "@types/whatwg-streams": "3.2.1",
     "command-line-args": "5.1.3",
     "command-line-usage": "6.1.1",
     "flatbuffers": "1.12.0",
@@ -95,7 +94,7 @@
     "ts-jest": "27.0.3",
     "ts-node": "10.1.0",
     "typedoc": "0.21.4",
-    "typescript": "4.3.5",
+    "typescript": "4.0.2",
     "web-streams-polyfill": "3.0.3",
     "xml2js": "0.4.23"
   },

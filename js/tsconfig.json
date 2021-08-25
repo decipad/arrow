@@ -10,7 +10,6 @@
     "noEmit": true,
     "esModuleInterop": true,
     "baseUrl": "./",
-    "lib": ["dom"],
     "paths": {
       "apache-arrow": ["src/Arrow.node"],
       "apache-arrow/*": ["src/*"]
