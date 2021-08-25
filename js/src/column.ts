@@ -32,8 +32,8 @@ export interface Column<T extends DataType = any> {
 export class Column<T extends DataType = any>
     extends Chunked<T>
     implements Clonable<Column<T>>,
-               Sliceable<Column<T>>,
-               Applicative<T, Column<T>> {
+    Sliceable<Column<T>>,
+    Applicative<T, Column<T>> {
 
     public static new<T extends DataType>(data: Data<T>, ...args: VectorCtorArgs<V<T>>): Column<T>;
     public static new<T extends DataType>(field: string | Field<T>, ...chunks: (Vector<T> | Vector<T>[])[]): Column<T>;
@@ -48,14 +48,14 @@ export class Column<T extends DataType = any>
         ];
 
         if (typeof field !== 'string' && !(field instanceof Field)) {
-            data = <Data<T> | Vector<T> | (Data<T> | Vector<T>)[]> field;
+            data = <Data<T> | Vector<T> | (Data<T> | Vector<T>)[]>field;
             field = '';
         }
 
         const chunks = Chunked.flatten<T>(
             Array.isArray(data) ? [...data, ...rest] :
-            data instanceof Vector ? [data, ...rest] :
-            [Vector.new(data, ...rest)]
+                data instanceof Vector ? [data, ...rest] :
+                    [Vector.new(data, ...rest)]
         );
 
         if (typeof field === 'string') {
@@ -77,7 +77,7 @@ export class Column<T extends DataType = any>
     }
 
     protected _field: Field<T>;
-    protected _children?: Column[];
+    declare protected _children?: Column[];
 
     public get field() { return this._field; }
     public get name() { return this._field.name; }

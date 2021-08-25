@@ -26,7 +26,7 @@ import { Builder, VariableWidthBuilder } from '../builder';
 /** @ignore */
 export class MapBuilder<K extends DataType = any, V extends DataType = any, TNull = any> extends VariableWidthBuilder<Map_<K, V>, TNull> {
 
-    protected _pending: MapValues<K, V> | undefined;
+    declare protected _pending: MapValues<K, V> | undefined;
     public set(index: number, value: MapValueExt<K, V> | TNull) {
         return super.set(index, value as MapValue<K, V> | TNull);
     }

@@ -194,7 +194,7 @@ export class Table<T extends { [key: string]: DataType } = any>
     protected _schema: Schema<T>;
     // List of inner RecordBatches
     protected _chunks: RecordBatch<T>[];
-    protected _children?: Column<T[keyof T]>[];
+    declare protected _children?: Column<T[keyof T]>[];
 
     public get schema() { return this._schema; }
     public get length() { return this._length; }

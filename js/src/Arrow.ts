@@ -101,14 +101,16 @@ export {
     Utf8Builder,
 } from './builder/index';
 
-export { ByteStream, AsyncByteStream, AsyncByteQueue, ReadableSource, WritableSink } from './io/stream';
+export { ByteStream, AsyncByteStream, AsyncByteQueue} from './io/stream';
+export type { ReadableSource, WritableSink } from './io/stream';
 export { RecordBatchReader, RecordBatchFileReader, RecordBatchStreamReader, AsyncRecordBatchFileReader, AsyncRecordBatchStreamReader } from './ipc/reader';
 export { RecordBatchWriter, RecordBatchFileWriter, RecordBatchStreamWriter, RecordBatchJSONWriter } from './ipc/writer';
 export { MessageReader, AsyncMessageReader, JSONMessageReader } from './ipc/message';
 export { Message } from './ipc/metadata/message';
 export { RecordBatch } from './recordbatch';
-export { ArrowJSONLike, FileHandle, Readable, Writable, ReadableWritable, ReadableDOMStreamOptions } from './io/interfaces';
-export { DataFrame, FilteredDataFrame, CountByResult, BindFunc, NextFunc } from './compute/dataframe';
+export type { ArrowJSONLike, FileHandle, Readable, Writable, ReadableWritable, ReadableDOMStreamOptions } from './io/interfaces';
+export { DataFrame, FilteredDataFrame, CountByResult } from './compute/dataframe';
+export type { BindFunc, NextFunc } from './compute/dataframe';
 
 import * as util_bn_ from './util/bn';
 import * as util_int_ from './util/int';

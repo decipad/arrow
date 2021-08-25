@@ -23,7 +23,7 @@ import { DataType, Map_, Struct, List } from '../type';
 
 /** @ignore */
 export class MapVector<K extends DataType = any, V extends DataType = any> extends BaseVector<Map_<K, V>> {
-    public asList() {
+    public asList(): Vector {
         const child = this.type.children[0] as Field<Struct<{ key: K; value: V }>>;
         return Vector.new(this.data.clone(new List<Struct<{ key: K; value: V }>>(child)));
     }

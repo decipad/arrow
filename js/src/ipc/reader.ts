@@ -522,7 +522,7 @@ class AsyncRecordBatchStreamReaderImpl<T extends { [key: string]: DataType } = a
 class RecordBatchFileReaderImpl<T extends { [key: string]: DataType } = any> extends RecordBatchStreamReaderImpl<T> {
 
     protected _footer?: Footer;
-    protected _handle!: RandomAccessFile;
+    declare protected _handle: RandomAccessFile;
     public get footer() { return this._footer!; }
     public get numDictionaries() { return this._footer ? this._footer.numDictionaries : 0; }
     public get numRecordBatches() { return this._footer ? this._footer.numRecordBatches : 0; }
@@ -592,7 +592,7 @@ class AsyncRecordBatchFileReaderImpl<T extends { [key: string]: DataType } = any
     implements AsyncRecordBatchFileReaderImpl<T> {
 
     protected _footer?: Footer;
-    protected _handle!: AsyncRandomAccessFile;
+    declare protected _handle: AsyncRandomAccessFile;
     public get footer() { return this._footer!; }
     public get numDictionaries() { return this._footer ? this._footer.numDictionaries : 0; }
     public get numRecordBatches() { return this._footer ? this._footer.numRecordBatches : 0; }

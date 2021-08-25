@@ -45,6 +45,7 @@ export class RecordBatch<T extends { [key: string]: DataType } = any>
                Applicative<Struct<T>, Table<T>> {
 
     public static from<T extends { [key: string]: DataType } = any, TNull = any>(options: VectorBuilderOptions<Struct<T>, TNull>): Table<T>;
+    // @ts-ignore
     public static from<T extends { [key: string]: DataType } = any, TNull = any>(options: VectorBuilderOptionsAsync<Struct<T>, TNull>): Promise<Table<T>>;
     /** @nocollapse */
     public static from<T extends { [key: string]: DataType } = any, TNull = any>(options: VectorBuilderOptions<Struct<T>, TNull> | VectorBuilderOptionsAsync<Struct<T>, TNull>) {

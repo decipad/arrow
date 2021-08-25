@@ -204,8 +204,10 @@ async function* fromDOMStream<T extends ArrayBufferViewInput>(source: ReadableSt
 class AdaptiveByteReader<T extends ArrayBufferViewInput> {
 
     private supportsBYOB: boolean;
+    // @ts-ignore
     private byobReader: ReadableStreamBYOBReader | null = null;
     private defaultReader: ReadableStreamDefaultReader<T> | null = null;
+    // @ts-ignore
     private reader: ReadableStreamBYOBReader | ReadableStreamDefaultReader<T> | null;
 
     constructor(private source: ReadableStream<T>) {
@@ -261,6 +263,7 @@ class AdaptiveByteReader<T extends ArrayBufferViewInput> {
     private getBYOBReader() {
         if (this.defaultReader) { this.releaseLock(); }
         if (!this.byobReader) {
+            // @ts-ignore
             this.byobReader = this.source['getReader']({ mode: 'byob' });
             // We have to catch and swallow errors here to avoid uncaught promise rejection exceptions
             // that seem to be raised when we call `releaseLock()` on this reader. I'm still mystified
@@ -280,6 +283,7 @@ class AdaptiveByteReader<T extends ArrayBufferViewInput> {
 }
 
 /** @ignore */
+// @ts-ignore
 async function readInto(reader: ReadableStreamBYOBReader, buffer: ArrayBufferLike, offset: number, size: number): Promise<ReadableStreamReadResult<Uint8Array>> {
     if (offset >= size) {
         return { done: false, value: new Uint8Array(buffer, 0, size) };
@@ -298,7 +302,7 @@ type Event = [EventName, (_: any) => void, Promise<[EventName, Error | null]>];
 /** @ignore */
 const onEvent = <T extends string>(stream: NodeJS.ReadableStream, event: T) => {
     const handler = (_: any) => resolve([event, _]);
-    let resolve: (value?: [T, any] | PromiseLike<[T, any]>) => void;
+    let resolve: (value: [T, any] | PromiseLike<[T, any]>) => void;
     return [event, handler, new Promise<[T, any]>(
         (r) => (resolve = r) && stream['once'](event, handler)
     )] as Event;
@@ -379,7 +383,7 @@ async function* fromNodeStream(stream: NodeJS.ReadableStream): AsyncUint8ArrayGe
 
     function cleanup<T extends Error | null | void>(events: Event[], err?: T) {
         buffer = buffers = <any> null;
-        return new Promise<T>((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             for (const [evt, fn] of events) {
                 stream['off'](evt, fn);
             }

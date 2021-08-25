@@ -24,6 +24,7 @@ import { VectorType as V } from '../interfaces';
 import { AbstractVector, Vector, Clonable, Sliceable, Applicative } from '../vector';
 
 /** @ignore */
+// @ts-ignore
 export interface BaseVector<T extends DataType = any> extends Clonable<V<T>>, Sliceable<V<T>>, Applicative<T, Chunked<T>> {
     slice(begin?: number, end?: number): V<T>;
     concat(...others: Vector<T>[]): Chunked<T>;
@@ -64,7 +65,8 @@ export abstract class BaseVector<T extends DataType = any> extends AbstractVecto
 
     public get [Symbol.toStringTag]() { return `${this.VectorName}<${this.type[Symbol.toStringTag]}>`; }
 
-    public clone<R extends DataType = T>(data: Data<R>, children = this._children) {
+    // @ts-ignore
+    public clone<R extends DataType = T>(data: Data<R>, children = this._children): V<R> {
         return Vector.new<R>(data, children) as any;
     }
 

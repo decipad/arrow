@@ -16,7 +16,7 @@
 // under the License.
 
 /** @ignore */
-export { Builder, BuilderOptions } from '../builder';
+export type { BuilderOptions } from '../builder';
 export { BoolBuilder } from './bool';
 export { NullBuilder } from './null';
 export { DateBuilder, DateDayBuilder, DateMillisecondBuilder } from './date';
@@ -80,3 +80,5 @@ function newBuilder<T extends DataType = any, TNull = any>(options: BuilderOptio
     });
 
 (Utf8Builder.prototype as any)._setValue = setVisitor.visitBinary;
+
+export { Builder };

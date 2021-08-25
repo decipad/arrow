@@ -80,14 +80,13 @@ export {
     TimeVector, TimeSecondVector, TimeMillisecondVector, TimeMicrosecondVector, TimeNanosecondVector,
     UnionVector, DenseUnionVector, SparseUnionVector,
     Utf8Vector,
-    ByteStream, AsyncByteStream, AsyncByteQueue, ReadableSource, WritableSink,
+    AsyncByteQueue, ByteStream, AsyncByteStream,
     RecordBatchReader, RecordBatchFileReader, RecordBatchStreamReader, AsyncRecordBatchFileReader, AsyncRecordBatchStreamReader,
     RecordBatchWriter, RecordBatchFileWriter, RecordBatchStreamWriter, RecordBatchJSONWriter,
     MessageReader, AsyncMessageReader, JSONMessageReader,
     Message,
     RecordBatch,
-    ArrowJSONLike, FileHandle, Readable, Writable, ReadableWritable, ReadableDOMStreamOptions,
-    DataFrame, FilteredDataFrame, CountByResult, BindFunc, NextFunc,
+    DataFrame, FilteredDataFrame, CountByResult,
     predicate,
     util,
     Builder,
@@ -110,4 +109,10 @@ export {
     UnionBuilder, DenseUnionBuilder, SparseUnionBuilder,
     Utf8Builder,
     isTypedArray,
+} from './Arrow';
+
+export type {
+    ReadableSource, WritableSink, Readable, Writable, ArrowJSONLike,
+    FileHandle, ReadableWritable, ReadableDOMStreamOptions,
+    BindFunc, NextFunc,
 } from './Arrow';

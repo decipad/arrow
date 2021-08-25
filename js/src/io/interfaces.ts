@@ -63,6 +63,8 @@ export interface ReadableWritable<TReadable, TWritable> extends Readable<TReadab
     toNodeStream(options?: import('stream').ReadableOptions): import('stream').Readable;
 }
 
+type PipeOptions = Parameters<ReadableStream["pipeTo"]>[1];
+
 /** @ignore */
 export abstract class ReadableInterop<T> {
 
@@ -92,7 +94,7 @@ export abstract class ReadableInterop<T> {
 }
 
 /** @ignore */
-type Resolution<T> = { resolve: (value?: T | PromiseLike<T>) => void; reject: (reason?: any) => void };
+type Resolution<T> = { resolve: (value: T | PromiseLike<T>) => void; reject: (reason?: any) => void };
 
 /** @ignore */
 export class AsyncQueue<TReadable = Uint8Array, TWritable = TReadable> extends ReadableInterop<TReadable>
